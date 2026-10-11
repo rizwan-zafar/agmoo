@@ -4,7 +4,7 @@
 
 Staff control room for catalog, COD orders, guides, and contact inbox.
 
-Visual system: ink sidebar, cyan active states, wide main column (no 1120px cap), toolbar + white panels on list pages.
+Visual system: ink sidebar, red active states, wide main column (no 1120px cap), toolbar + white panels on list pages.
 
 Pages:
 

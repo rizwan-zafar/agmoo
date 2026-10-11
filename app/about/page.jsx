@@ -16,12 +16,12 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-ink-950 text-white py-16">
-        <div className="absolute inset-0 bg-grid-fade opacity-60" />
+      <section className="relative overflow-hidden bg-red-600 text-white py-16">
+        <div className="absolute inset-0 bg-grid-fade opacity-40" />
         <div className="container-app relative text-center">
-          <p className="text-brand-300 text-sm font-semibold uppercase tracking-[0.2em] mb-3">About Agmoo</p>
+          <p className="text-white/80 text-sm font-semibold uppercase tracking-[0.2em] mb-3">About Agmoo</p>
           <h1 className="font-display text-4xl font-bold mb-3">Accessories that keep you moving</h1>
-          <p className="text-slate-300 max-w-2xl mx-auto">
+          <p className="text-white/85 max-w-2xl mx-auto">
             Agmoo is a mobile accessories shop for people who want cables, chargers,
             earbuds and adapters that feel current — not leftover from last year.
           </p>
@@ -29,8 +29,8 @@ export default function AboutPage() {
       </section>
 
       <section className="container-app py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <div className="aspect-video rounded-3xl overflow-hidden bg-ink-950 flex items-center justify-center text-7xl relative">
-          <div className="absolute inset-0 bg-grid-fade opacity-50" />
+        <div className="aspect-video rounded-3xl overflow-hidden bg-red-600 flex items-center justify-center text-7xl relative">
+          <div className="absolute inset-0 bg-grid-fade opacity-40" />
           <span className="relative">⚡</span>
         </div>
         <div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-slate-50 border border-slate-200 p-6 text-center">
+              <div key={v.title} className="rounded-2xl bg-red-50 border border-red-100 p-6 text-center">
                 <div className="text-4xl mb-3">{v.icon}</div>
                 <h3 className="font-semibold text-ink-900 mb-1.5">{v.title}</h3>
                 <p className="text-sm text-slate-500">{v.desc}</p>

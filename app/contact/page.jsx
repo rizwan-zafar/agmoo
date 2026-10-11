@@ -5,47 +5,41 @@ export const metadata = {
   description: "Get in touch with Agmoo for orders, product questions, and support.",
 };
 
+const INFO = [
+  { icon: "📍", title: "Our Address", detail: "Lahore, Pakistan" },
+  { icon: "📞", title: "Phone", detail: "+92 300 1234567" },
+  { icon: "✉️", title: "Email", detail: "support@agmoo.com" },
+  { icon: "🕒", title: "Working Hours", detail: "Mon - Sat: 9:00 AM - 8:00 PM" },
+];
+
 export default function ContactPage() {
   return (
-    <div className="container-app py-10">
-      <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-ink-900">Contact Us</h1>
-        <p className="text-slate-500 mt-1">Questions about an order or a product? We&apos;re here.</p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-          <ContactForm />
+    <div>
+      <section className="bg-red-600 text-white py-12 mb-10">
+        <div className="container-app">
+          <h1 className="font-display text-3xl font-bold">Contact Us</h1>
+          <p className="text-white/85 mt-1">Questions about an order or a product? We&apos;re here.</p>
         </div>
+      </section>
 
-        <div className="flex flex-col gap-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 flex items-start gap-4">
-            <span className="text-2xl">📍</span>
-            <div>
-              <h3 className="font-semibold text-ink-900">Our Address</h3>
-              <p className="text-sm text-slate-500 mt-1">Lahore, Pakistan</p>
-            </div>
+      <div className="container-app pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 rounded-2xl border border-red-100 bg-white p-6 sm:p-8 shadow-[0_16px_40px_rgba(220,38,38,0.08)]">
+            <ContactForm />
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 flex items-start gap-4">
-            <span className="text-2xl">📞</span>
-            <div>
-              <h3 className="font-semibold text-ink-900">Phone</h3>
-              <p className="text-sm text-slate-500 mt-1">+92 300 1234567</p>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 flex items-start gap-4">
-            <span className="text-2xl">✉️</span>
-            <div>
-              <h3 className="font-semibold text-ink-900">Email</h3>
-              <p className="text-sm text-slate-500 mt-1">support@agmoo.com</p>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 flex items-start gap-4">
-            <span className="text-2xl">🕒</span>
-            <div>
-              <h3 className="font-semibold text-ink-900">Working Hours</h3>
-              <p className="text-sm text-slate-500 mt-1">Mon - Sat: 9:00 AM - 8:00 PM</p>
-            </div>
+
+          <div className="flex flex-col gap-4">
+            {INFO.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-red-100 bg-white p-6 flex items-start gap-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-2xl">
+                  {item.icon}
+                </span>
+                <div>
+                  <h3 className="font-semibold text-ink-900">{item.title}</h3>
+                  <p className="text-sm text-slate-500 mt-1">{item.detail}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

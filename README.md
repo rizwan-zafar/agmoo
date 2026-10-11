@@ -27,6 +27,8 @@ Copy `.env.example` to `.env` (or use the local `.env` already in the project):
 ```
 DATABASE_URL="mysql://root:@127.0.0.1:3306/agmoo"
 JWT_SECRET="change-this-in-production"
+AUTH_SECRET="change-this-in-production"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ADMIN_SEED_EMAIL="admin@agmoo.com"
 ADMIN_SEED_PASSWORD="Admin@123"
 ADMIN_NOTIFY_EMAIL="admin@agmoo.com"
@@ -59,6 +61,26 @@ Customer → Products → Cart (localStorage) → Checkout (COD) → stock decre
 in a transaction → emails → admin dashboard.
 
 Guest checkout only. Cancelling an order restores stock.
+
+## cPanel deploy (same pattern as Plugo)
+
+Keep **two folders**. Do not put the Next app in `public_html`.
+
+| Role | Path |
+| --- | --- |
+| Application root (Node / GitHub upload) | `/home/YOURUSER/agmoo` |
+| Domain document root (leave this) | `/home/YOURUSER/public_html` |
+| Application URL | your domain (`/`) |
+
+**Setup Node.js App:** Node 20, Production, application root `/home/YOURUSER/agmoo`, Application URL = your domain, startup file = **`server.js`**. CloudLinux writes Passenger into `public_html/.htaccess` and sets `PORT`.
+
+GitHub **Deploy to cPanel** (`push` to `main` or `backup`): `npm ci` → `prisma generate` → `next build` → upload to `CPANEL_APP_PATH` → write `.env` → restart. No `npm ci` on the server. No table create on deploy — import dumps yourself.
+
+Secrets: `CPANEL_HOST`, `CPANEL_USERNAME`, `CPANEL_PORT` (`22`), `CPANEL_SSH_KEY`, `CPANEL_SSH_PASSPHRASE` if needed, `CPANEL_APP_PATH` = `/home/YOURUSER/agmoo`, `CPANEL_NODEVENV`, `ENV_DATABASE_URL`, `ENV_AUTH_SECRET`, `ENV_NEXT_PUBLIC_SITE_URL`. Optional SMTP secrets. No `CPANEL_PASSWORD`.
+
+`ENV_AUTH_SECRET` is written as `JWT_SECRET`. If Save/Restart says lock, wait. WordPress in `public_html` will break `/_next/` assets.
+
+Manual pack (optional): `./scripts/cpanel-pack.sh` → upload `agmoo-cpanel.tar.gz`.
 
 ## Module docs
 

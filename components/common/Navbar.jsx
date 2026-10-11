@@ -21,7 +21,8 @@ export default function Navbar() {
   const { totalItems, hydrated } = useCart();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-red-600/15 bg-white shadow-[0_1px_0_rgba(220,38,38,0.08)]">
+      <div className="h-1 bg-red-600" />
       <div className="container-app flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Agmoo home">
           <BrandMark />
@@ -37,8 +38,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   active
-                    ? "bg-ink-900 text-white"
-                    : "text-slate-600 hover:text-ink-900 hover:bg-slate-100"
+                    ? "bg-red-600 text-white"
+                    : "text-slate-600 hover:bg-red-50 hover:text-red-600"
                 }`}
               >
                 {link.label}
@@ -50,14 +51,14 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/cart"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 hover:text-ink-900 transition-colors"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-red-600 hover:bg-red-50 transition-colors"
             aria-label="View cart"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.87-4.508 2.478-7.393L21.11 7.5H5.106M7.5 14.25L5.106 7.5m2.394 6.75l-1.87 6.53M7.5 14.25l1.87 6.53M6 21a.75.75 0 100-1.5.75.75 0 000 1.5zm12 0a.75.75 0 100-1.5.75.75 0 000 1.5z" />
             </svg>
             {hydrated && totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-500 px-1 text-[11px] font-bold text-ink-950">
+              <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-bold text-white">
                 {totalItems}
               </span>
             )}
@@ -65,7 +66,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100"
+            className="md:hidden flex h-10 w-10 items-center justify-center rounded-full text-red-600 hover:bg-red-50"
             aria-label="Toggle menu"
           >
             {open ? (
@@ -82,18 +83,26 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-slate-200 bg-white animate-fade-in">
+        <nav className="md:hidden border-t border-red-100 bg-white animate-fade-in">
           <div className="container-app flex flex-col py-2">
-            {LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-ink-900"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {LINKS.map((link) => {
+              const active =
+                link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-lg px-3 py-3 text-sm font-medium ${
+                    active
+                      ? "bg-red-600 text-white"
+                      : "text-slate-700 hover:bg-red-50 hover:text-red-600"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         </nav>
       )}

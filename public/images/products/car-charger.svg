@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0e7490" />
+      <stop offset="0%" stop-color="#991b1b" />
       <stop offset="100%" stop-color="#0b1220" />
     </linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -10,7 +10,7 @@
   </defs>
   <rect width="600" height="600" fill="url(#g)" />
   <rect width="600" height="600" fill="url(#grid)" />
-  <circle cx="470" cy="110" r="170" fill="rgba(34,211,238,0.18)" />
+  <circle cx="470" cy="110" r="170" fill="rgba(248,113,113,0.18)" />
   <circle cx="300" cy="240" r="120" fill="rgba(255,255,255,0.08)" />
   <text x="300" y="268" font-size="84" text-anchor="middle" font-family="Arial, sans-serif">🚗</text>
   <foreignObject x="40" y="420" width="520" height="140">

@@ -11,6 +11,7 @@ import Button from "@/components/common/Button";
 import EmptyState from "@/components/common/EmptyState";
 import Spinner from "@/components/common/Spinner";
 import { formatCurrency } from "@/lib/utils";
+import PageBanner from "@/components/common/PageBanner";
 
 export default function CheckoutPage() {
   const { items, subtotal, hydrated, clearCart } = useCart();
@@ -87,8 +88,9 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="container-app py-10">
-      <h1 className="font-display text-3xl font-bold text-stone-800 mb-8">Checkout</h1>
+    <div>
+      <PageBanner title="Checkout" subtitle="Cash on Delivery — pay when the box lands." />
+    <div className="container-app pb-10">
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <form onSubmit={handleSubmit} className="lg:col-span-2 rounded-2xl border border-stone-200 bg-white p-6 flex flex-col gap-5">
@@ -177,6 +179,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

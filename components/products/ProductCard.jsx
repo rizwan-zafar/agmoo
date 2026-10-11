@@ -30,7 +30,7 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-shadow duration-200 hover:shadow-[0_24px_50px_rgba(6,182,212,0.18)]">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-shadow duration-200 hover:shadow-[0_24px_50px_rgba(220,38,38,0.18)]">
       <Link href={`/products/${product.slug}`} className="block">
         <div className="relative aspect-square overflow-hidden bg-slate-100">
           <SmartImage

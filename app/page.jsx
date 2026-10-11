@@ -76,7 +76,7 @@ export default async function HomePage() {
                 <p className="text-slate-300 max-w-md mb-6">
                   No online payment. Order the accessory, keep cash ready, pay when the box lands.
                 </p>
-                <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(6,182,212,0.45)]">
+                <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(220,38,38,0.45)]">
                   Start Shopping →
                 </Button>
               </div>
@@ -140,7 +140,7 @@ export default async function HomePage() {
               <p className="text-slate-300 max-w-xl mx-auto mb-8">
                 Browse cables, adapters, earbuds and handsfree — no signup, Cash on Delivery.
               </p>
-              <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(6,182,212,0.45)]">
+              <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(220,38,38,0.45)]">
                 Explore All Products
               </Button>
             </div>

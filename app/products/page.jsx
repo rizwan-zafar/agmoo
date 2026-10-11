@@ -5,6 +5,7 @@ import ProductGrid from "@/components/products/ProductGrid";
 import ProductFilters from "@/components/products/ProductFilters";
 import PageLinks from "@/components/common/PageLinks";
 import ShopVoltMark from "@/components/products/ShopVoltMark";
+import PageBanner from "@/components/common/PageBanner";
 
 export const metadata = {
   title: "All Products | Agmoo",
@@ -59,16 +60,17 @@ export default async function ProductsPage({ searchParams }) {
   const { products, categories, page, totalPages } = await getData(resolvedSearchParams);
 
   return (
-    <div className="container-app py-10">
-      <ShopVoltMark />
-      <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-ink-900">All Products</h1>
-        <p className="text-slate-500 mt-1">
-          {resolvedSearchParams.category
+    <div>
+      <PageBanner
+        title="All Products"
+        subtitle={
+          resolvedSearchParams.category
             ? `Showing products in "${categories.find((c) => c.slug === resolvedSearchParams.category)?.name || resolvedSearchParams.category}"`
-            : "Cables, chargers, earbuds, handsfree and power banks"}
-        </p>
-      </div>
+            : "Cables, chargers, earbuds, handsfree and power banks"
+        }
+      />
+    <div className="container-app pb-10">
+      <ShopVoltMark />
 
       <ProductFilters categories={categories} />
       <ProductGrid products={products} />
@@ -79,6 +81,7 @@ export default async function ProductsPage({ searchParams }) {
         page={page}
         totalPages={totalPages}
       />
+    </div>
     </div>
   );
 }

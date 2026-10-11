@@ -16,7 +16,7 @@ Admin list tables use `Table` with `.admin-table` styles. Toasts sit bottom-righ
 ## Rules to keep
 
 - Plain JS React. No TypeScript unless requested.
-- Palette: ink + electric cyan (`app/globals.css` tokens).
+- Palette: red + white (`app/globals.css` tokens).
 - Fonts: Outfit (headings) + Inter (body).
 
 ## Requested changes

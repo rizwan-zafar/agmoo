@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function StatCard({ icon, label, value, href, tone = "cyan" }) {
+export default function StatCard({ icon, label, value, href, tone = "red" }) {
   const body = (
     <div className={`admin-stat admin-stat-${tone}`}>
       <span className="admin-stat-icon">{icon}</span>

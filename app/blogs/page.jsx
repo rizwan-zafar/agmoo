@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { toPlain, formatDate } from "@/lib/utils";
 import PageLinks from "@/components/common/PageLinks";
 import EmptyState from "@/components/common/EmptyState";
+import PageBanner from "@/components/common/PageBanner";
 
 export const metadata = {
   title: "Guides | Agmoo",
@@ -30,11 +31,9 @@ export default async function BlogsPage({ searchParams }) {
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <div className="container-app py-10">
-      <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-ink-900">Guides</h1>
-        <p className="text-slate-500 mt-1">Charge smarter. Connect cleaner.</p>
-      </div>
+    <div>
+      <PageBanner title="Guides" subtitle="Charge smarter. Connect cleaner." />
+    <div className="container-app pb-10">
 
       {plainBlogs.length > 0 ? (
         <>
@@ -73,6 +72,7 @@ export default async function BlogsPage({ searchParams }) {
       ) : (
         <EmptyState icon="📰" title="No blog posts yet" description="Check back soon for new articles." />
       )}
+    </div>
     </div>
   );
 }

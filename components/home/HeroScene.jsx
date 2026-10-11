@@ -52,23 +52,23 @@ export default function HeroScene() {
 
       <div className="container-app relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center min-h-[88vh] py-16 sm:py-20">
         <div className="animate-fade-in">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 mb-6 shadow-[0_0_40px_rgba(34,211,238,0.25)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 mb-6 shadow-[0_0_40px_rgba(248,113,113,0.25)]">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
             Live 3D accessory studio
           </span>
           <h1 className="hero-3d-title font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[0.95] mb-6">
-            Plug in.
+            Charge faster.
             <br />
-            Power up.
+            Last all day.
             <br />
-            <span className="hero-3d-go">Go.</span>
+            <span className="hero-3d-go">You&apos;re set.</span>
           </h1>
           <p className="text-slate-300 text-lg max-w-xl mb-8">
             Move the scene. Cables, chargers, earbuds and adapters float in
             depth — shop the kit that keeps every phone ready.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(6,182,212,0.45)]">
+            <Button as={Link} href="/products" size="lg" className="shadow-[0_18px_40px_rgba(220,38,38,0.45)]">
               Shop Accessories
             </Button>
             <Button as={Link} href="/categories" variant="outline" size="lg">

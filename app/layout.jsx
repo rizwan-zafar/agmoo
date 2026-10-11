@@ -19,6 +19,10 @@ export const metadata = {
   title: "Agmoo | Mobile Accessories for Everyday Speed",
   description:
     "Shop charging cables, adapters, earbuds, handsfree and power banks from Agmoo. Fast, durable accessories with Cash on Delivery across Pakistan.",
+  icons: {
+    icon: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -80,7 +80,7 @@ export default async function AdminDashboardPage() {
       </section>
 
       <div className="admin-stat-grid">
-        <StatCard href="/admin/products" tone="cyan" label="Products" value={stats.totalProducts} icon={<BoltIcon />} />
+        <StatCard href="/admin/products" tone="red" label="Products" value={stats.totalProducts} icon={<BoltIcon />} />
         <StatCard href="/admin/categories" tone="ink" label="Categories" value={stats.totalCategories} icon="▣" />
         <StatCard href="/admin/orders" tone="ink" label="Orders" value={stats.totalOrders} icon="▤" />
         <StatCard href="/admin/orders" tone="warn" label="Pending COD" value={stats.pendingOrders} icon="◉" />

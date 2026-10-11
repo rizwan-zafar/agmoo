@@ -7,6 +7,7 @@ import EmptyState from "@/components/common/EmptyState";
 import Button from "@/components/common/Button";
 import Spinner from "@/components/common/Spinner";
 import { formatCurrency } from "@/lib/utils";
+import PageBanner from "@/components/common/PageBanner";
 
 export default function CartPage() {
   const { items, subtotal, hydrated, clearCart } = useCart();
@@ -37,8 +38,9 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container-app py-10">
-      <h1 className="font-display text-3xl font-bold text-stone-800 mb-8">Your Cart</h1>
+    <div>
+      <PageBanner title="Your Cart" subtitle="Review your accessories, then checkout with Cash on Delivery." />
+    <div className="container-app pb-10">
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 rounded-2xl border border-stone-200 bg-white px-5 sm:px-6">
@@ -77,6 +79,7 @@ export default function CartPage() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }
