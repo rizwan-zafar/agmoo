@@ -17,6 +17,6 @@ app
     });
   })
   .catch((error) => {
-    console.error("Failed to start Agmoo server:", error);
+    console.error("Failed to start Agmoo server::", error);
     process.exit(1);
   });
