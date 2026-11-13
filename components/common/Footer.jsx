@@ -22,7 +22,6 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/80">
             <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
             <li><Link href="/categories" className="hover:text-white transition-colors">Categories</Link></li>
-            <li><Link href="/blogs" className="hover:text-white transition-colors">Buying Guides</Link></li>
             <li><Link href="/about" className="hover:text-white transition-colors">About Agmoo</Link></li>
             <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
           </ul>

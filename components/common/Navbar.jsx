@@ -5,12 +5,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useCart } from "@/components/cart/CartContext";
 import BrandMark from "./BrandMark";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 const LINKS = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Shop" },
   { href: "/categories", label: "Categories" },
-  { href: "/blogs", label: "Guides" },
+  ...(BLOGS_ENABLED ? [{ href: "/blogs", label: "Guides" }] : []),
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

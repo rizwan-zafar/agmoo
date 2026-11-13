@@ -3,8 +3,12 @@ import { prisma } from "@/lib/db";
 import { getAdminSessionFromRequest } from "@/lib/auth";
 import { slugify, ensureUniqueSlug, toPlain } from "@/lib/utils";
 import { validateBlog, hasErrors } from "@/lib/validation";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 export async function GET(request) {
+  if (!BLOGS_ENABLED) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
   const { searchParams } = request.nextUrl;
   const includeUnpublished = searchParams.get("all") === "true";
   const page = Math.max(1, Number(searchParams.get("page")) || 1);
@@ -29,6 +33,9 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+  if (!BLOGS_ENABLED) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
   const session = getAdminSessionFromRequest(request);
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

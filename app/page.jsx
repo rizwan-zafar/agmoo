@@ -11,6 +11,7 @@ import HomeCategoryWall from "@/components/home/HomeCategoryWall";
 import HomeStandard from "@/components/home/HomeStandard";
 import HomeCodScene from "@/components/home/HomeCodScene";
 import HomeFieldNotes from "@/components/home/HomeFieldNotes";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 export const dynamic = "force-dynamic";
 
@@ -27,11 +28,13 @@ async function getHomeData() {
       take: 5,
       include: { _count: { select: { products: true } } },
     }),
-    prisma.blog.findMany({
-      where: { status: "PUBLISHED" },
-      orderBy: { publishedAt: "desc" },
-      take: 3,
-    }),
+    BLOGS_ENABLED
+      ? prisma.blog.findMany({
+          where: { status: "PUBLISHED" },
+          orderBy: { publishedAt: "desc" },
+          take: 3,
+        })
+      : Promise.resolve([]),
   ]);
 
   return {
@@ -111,7 +114,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {blogs.length > 0 && (
+      {BLOGS_ENABLED && blogs.length > 0 && (
         <section className="home-band notes-band">
           <div className="container-app relative py-16 sm:py-20">
             <div className="flex items-end justify-between mb-10">

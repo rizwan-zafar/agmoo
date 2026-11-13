@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import BrandMark from "@/components/common/BrandMark";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 const LINKS = [
   { href: "/admin", label: "Dashboard", exact: true, icon: "dash" },
   { href: "/admin/products", label: "Products", icon: "bolt" },
   { href: "/admin/categories", label: "Categories", icon: "grid" },
   { href: "/admin/orders", label: "Orders", icon: "box" },
-  { href: "/admin/blogs", label: "Guides", icon: "note" },
+  ...(BLOGS_ENABLED ? [{ href: "/admin/blogs", label: "Guides", icon: "note" }] : []),
   { href: "/admin/messages", label: "Messages", icon: "mail" },
 ];
 

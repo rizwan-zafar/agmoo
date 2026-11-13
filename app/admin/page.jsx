@@ -96,10 +96,6 @@ export default async function AdminDashboardPage() {
           <span>Inbox</span>
           <strong>{stats.unreadMessages ? `${stats.unreadMessages} unread` : "All caught up"}</strong>
         </Link>
-        <Link href="/admin/blogs/new" className="admin-quick-card">
-          <span>Field notes</span>
-          <strong>Write a guide</strong>
-        </Link>
         <Link href="/" className="admin-quick-card">
           <span>Storefront</span>
           <strong>See the shop</strong>

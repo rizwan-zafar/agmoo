@@ -5,12 +5,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AdminSidebar from "./AdminSidebar";
 import BrandMark from "@/components/common/BrandMark";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 const TITLES = [
   { match: "/admin/products", title: "Products", note: "Catalog and stock" },
   { match: "/admin/categories", title: "Categories", note: "Shop boards" },
   { match: "/admin/orders", title: "Orders", note: "Cash on delivery" },
-  { match: "/admin/blogs", title: "Guides", note: "Field notes" },
+  ...(BLOGS_ENABLED ? [{ match: "/admin/blogs", title: "Guides", note: "Field notes" }] : []),
   { match: "/admin/messages", title: "Messages", note: "Inbox from the site" },
   { match: "/admin", title: "Dashboard", note: "Live store pulse" },
 ];

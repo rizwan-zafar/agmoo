@@ -3,8 +3,12 @@ import { prisma } from "@/lib/db";
 import { getAdminSessionFromRequest } from "@/lib/auth";
 import { slugify, ensureUniqueSlug, toPlain } from "@/lib/utils";
 import { validateBlog, hasErrors } from "@/lib/validation";
+import { BLOGS_ENABLED } from "@/lib/features";
 
 export async function GET(request, { params }) {
+  if (!BLOGS_ENABLED) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
   const { id } = await params;
   const blog = await prisma.blog.findUnique({ where: { id: Number(id) } });
   if (!blog) {
@@ -14,6 +18,9 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
+  if (!BLOGS_ENABLED) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
   const session = getAdminSessionFromRequest(request);
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -57,6 +64,9 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
+  if (!BLOGS_ENABLED) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
   const session = getAdminSessionFromRequest(request);
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
