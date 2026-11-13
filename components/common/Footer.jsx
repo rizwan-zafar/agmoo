@@ -55,14 +55,14 @@ export default function Footer() {
         <div className="container-app py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/70">
           <p>&copy; {new Date().getFullYear()} Agmoo. All rights reserved.</p>
           <p>
-            Developed by{" "}
+            Powered by{" "}
             <a
               href="https://mayonity.com"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-white hover:opacity-90 transition-opacity underline-offset-2 hover:underline"
             >
-              Mayoniy
+              Mayonity
             </a>
           </p>
           <Link href="/admin/login" className="hover:text-white transition-colors">

@@ -64,6 +64,8 @@ Guest checkout only. Cancelling an order restores stock.
 
 ## cPanel deploy (same pattern as Plugo)
 
+Full reusable guide: [docs/deployment-cpanel-nextjs-mysql.md](docs/deployment-cpanel-nextjs-mysql.md).
+
 Keep **two folders**. Do not put the Next app in `public_html`.
 
 | Role | Path |
