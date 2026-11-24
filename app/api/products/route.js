@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { getAdminSessionFromRequest } from "@/lib/auth";
 import { slugify, ensureUniqueSlug, toPlain } from "@/lib/utils";
 import { validateProduct, hasErrors } from "@/lib/validation";
-import { productListInclude, normalizeVariants } from "@/lib/product";
+import { productListInclude, normalizeVariants, normalizeProductImages } from "@/lib/product";
 
 export async function GET(request) {
   const { searchParams } = request.nextUrl;
@@ -79,7 +79,7 @@ export async function POST(request) {
       description: data.description?.trim() || null,
       price: minPrice,
       stock: totalStock,
-      images: Array.isArray(data.images) ? data.images : [],
+      images: normalizeProductImages(data.images),
       status: data.status || "ACTIVE",
       categoryId: category.id,
       variants: {

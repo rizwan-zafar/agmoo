@@ -6,7 +6,8 @@ import Input from "@/components/common/Input";
 import Textarea from "@/components/common/Textarea";
 import Select from "@/components/common/Select";
 import Button from "@/components/common/Button";
-import ImageUploader from "@/components/admin/ImageUploader";
+import ProductImagesUploader from "@/components/admin/ProductImagesUploader";
+import { normalizeProductImages } from "@/lib/product";
 import { useToast } from "@/components/common/ToastContext";
 
 function emptyVariant() {
@@ -40,7 +41,7 @@ export default function ProductForm({ product }) {
     description: product?.description || "",
     categoryId: product?.categoryId ? String(product.categoryId) : "",
     status: product?.status || "ACTIVE",
-    image: Array.isArray(product?.images) && product.images[0] ? product.images[0] : "",
+    images: normalizeProductImages(product?.images),
     variants: initialVariants(product),
   });
   const [errors, setErrors] = useState({});
@@ -86,7 +87,7 @@ export default function ProductForm({ product }) {
       description: form.description,
       categoryId: form.categoryId,
       status: form.status,
-      images: form.image ? [form.image] : [],
+      images: normalizeProductImages(form.images),
       variants: form.variants,
     };
 
@@ -214,7 +215,10 @@ export default function ProductForm({ product }) {
         </div>
       </div>
 
-      <ImageUploader label="Product Image" value={form.image} onChange={(url) => setForm((f) => ({ ...f, image: url }))} />
+      <ProductImagesUploader
+        value={form.images}
+        onChange={(images) => setForm((f) => ({ ...f, images }))}
+      />
 
       <div className="flex justify-end gap-3 pt-2 border-t border-slate-100 mt-2">
         <Button type="button" variant="secondary" onClick={() => router.push("/admin/products")}>

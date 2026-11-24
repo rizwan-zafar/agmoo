@@ -20,6 +20,8 @@ Lets customers browse and open accessory products.
 - `components/products/ProductDetailActions.jsx`
 - `components/products/PriceDisplay.jsx`
 - `components/products/QuantitySelector.jsx`
+- `components/products/ProductImageCarousel.jsx`
+- `components/admin/ProductImagesUploader.jsx`
 - `components/products/ShopVoltMark.jsx`
 - `lib/product.js`
 - Shop filter / fly CSS in `app/globals.css` (`.shop-*`)
@@ -30,9 +32,10 @@ Lets customers browse and open accessory products.
 - Variants drive price and stock. Product `price` / `stock` are summaries.
 - Custom Category and Sort dropdowns (not native `<select>`).
 - Flying accessory: one item at a time, pointer-events none.
+- Product image uploads: admin hint **1600×1600** square, JPEG/WebP, max 5 MB (`ProductImagesUploader`).
 
 ## Requested changes
 
 Write new work here. Newest first. Tick the box when it is done.
 
-- [ ] _(none)_
+- [x] Up to 5 product images in admin (`ProductImagesUploader`); detail page carousel (`ProductImageCarousel`).

@@ -5,7 +5,8 @@ import { toPlain } from "@/lib/utils";
 import { productDetailInclude, productListInclude } from "@/lib/product";
 import ProductDetailActions from "@/components/products/ProductDetailActions";
 import ProductGrid from "@/components/products/ProductGrid";
-import SmartImage from "@/components/common/SmartImage";
+import ProductImageCarousel from "@/components/products/ProductImageCarousel";
+import { normalizeProductImages } from "@/lib/product";
 
 async function getProduct(slug) {
   const product = await prisma.product.findUnique({
@@ -41,7 +42,7 @@ export default async function ProductDetailPage({ params }) {
     include: productListInclude,
   });
 
-  const images = Array.isArray(product.images) && product.images.length > 0 ? product.images : [];
+  const images = normalizeProductImages(product.images);
 
   return (
     <div className="container-app py-10">
@@ -54,9 +55,7 @@ export default async function ProductDetailPage({ params }) {
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div className="aspect-square rounded-2xl overflow-hidden bg-brand-50 flex items-center justify-center">
-          <SmartImage src={images[0]} alt={product.name} className="h-full w-full object-cover" fallback="⚡" />
-        </div>
+        <ProductImageCarousel images={images} alt={product.name} />
 
         <div className="flex flex-col gap-5">
           <div>

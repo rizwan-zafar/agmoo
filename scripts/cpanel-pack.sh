@@ -27,7 +27,7 @@ echo "Building Next.js for ${SITE_URL}..."
 export NODE_ENV=production
 export SKIP_DB_BUILD=1
 export NEXT_PUBLIC_SITE_URL="$SITE_URL"
-npx next build
+npx next build --webpack
 
 echo "Packing ${OUT}..."
 rm -f "$OUT"
