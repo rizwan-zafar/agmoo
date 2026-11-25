@@ -7,7 +7,7 @@ import Footer from "./Footer";
 // The storefront Navbar/Footer should not appear on admin routes, which have
 // their own layout shell. Keeping this check client-side avoids duplicating
 // the whole route tree into route groups just for this one concern.
-export default function SiteChrome({ children }) {
+export default function SiteChrome({ children, footer }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
 
@@ -19,7 +19,7 @@ export default function SiteChrome({ children }) {
     <>
       <Navbar />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <Footer {...footer} />
     </>
   );
 }

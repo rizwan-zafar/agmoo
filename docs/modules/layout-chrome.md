@@ -17,6 +17,9 @@ Root App Router layout, fonts, global CSS, and storefront chrome.
 - `components/common/SiteChrome.jsx`
 - `components/common/Navbar.jsx`
 - `components/common/Footer.jsx`
+- `lib/siteSettings.js` — footer copy (singleton row)
+- `app/api/site-settings/route.js`
+- `app/admin/settings/page.jsx` — admin Footer editor
 
 ## Rules to keep
 
@@ -31,4 +34,6 @@ Write new work here. Newest first. Tick the box when it is done.
 
 - [x] Full site rebrand to red and white
 - [x] brand color is red and white we need to change Header and footer accordingly
+
+- [x] footer GET in touch part and part thatt is under logo with logo should be editable via admin
 

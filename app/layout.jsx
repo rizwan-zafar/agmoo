@@ -3,6 +3,7 @@ import "./globals.css";
 import SiteChrome from "@/components/common/SiteChrome";
 import { CartProvider } from "@/components/cart/CartContext";
 import { ToastProvider } from "@/components/common/ToastContext";
+import { getSiteSettings, pickFooterFields } from "@/lib/siteSettings";
 
 const heading = Outfit({
   variable: "--font-heading",
@@ -25,13 +26,15 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const footer = pickFooterFields(await getSiteSettings());
+
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <ToastProvider>
           <CartProvider>
-            <SiteChrome>{children}</SiteChrome>
+            <SiteChrome footer={footer}>{children}</SiteChrome>
           </CartProvider>
         </ToastProvider>
       </body>

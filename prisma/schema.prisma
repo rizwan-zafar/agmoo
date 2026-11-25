@@ -168,3 +168,14 @@ model ContactMessage {
 
   @@map("contact_messages")
 }
+
+model SiteSettings {
+  id            Int      @id
+  footerTagline String   @db.Text
+  footerAddress String
+  footerPhone   String
+  footerEmail   String
+  updatedAt     DateTime @updatedAt
+
+  @@map("site_settings")
+}

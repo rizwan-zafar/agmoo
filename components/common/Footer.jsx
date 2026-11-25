@@ -1,7 +1,12 @@
 import Link from "next/link";
 import BrandMark from "./BrandMark";
 
-export default function Footer() {
+export default function Footer({
+  footerTagline,
+  footerAddress,
+  footerPhone,
+  footerEmail,
+}) {
   return (
     <footer className="mt-20 bg-red-700 text-white">
       <div className="container-app py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -9,10 +14,7 @@ export default function Footer() {
           <div className="mb-4">
             <BrandMark light />
           </div>
-          <p className="text-sm text-white/80 leading-relaxed">
-            Mobile accessories engineered for everyday speed — cables, chargers,
-            earbuds and adapters that just work.
-          </p>
+          <p className="text-sm text-white/80 leading-relaxed">{footerTagline}</p>
         </div>
 
         <div>
@@ -43,9 +45,13 @@ export default function Footer() {
             Get in Touch
           </h4>
           <ul className="space-y-2 text-sm text-white/80">
-            <li>Lahore, Pakistan</li>
-            <li>+92 300 1234567</li>
-            <li>support@agmoo.com</li>
+            <li>{footerAddress}</li>
+            <li>{footerPhone}</li>
+            <li>
+              <a href={`mailto:${footerEmail}`} className="hover:text-white transition-colors">
+                {footerEmail}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

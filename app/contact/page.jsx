@@ -1,18 +1,20 @@
 import ContactForm from "@/components/ContactForm";
+import { getSiteSettings, pickFooterFields } from "@/lib/siteSettings";
 
 export const metadata = {
   title: "Contact Us | Agmoo",
   description: "Get in touch with Agmoo for orders, product questions, and support.",
 };
 
-const INFO = [
-  { icon: "📍", title: "Our Address", detail: "Lahore, Pakistan" },
-  { icon: "📞", title: "Phone", detail: "+92 300 1234567" },
-  { icon: "✉️", title: "Email", detail: "support@agmoo.com" },
-  { icon: "🕒", title: "Working Hours", detail: "Mon - Sat: 9:00 AM - 8:00 PM" },
-];
+export default async function ContactPage() {
+  const { footerAddress, footerPhone, footerEmail } = pickFooterFields(await getSiteSettings());
 
-export default function ContactPage() {
+  const INFO = [
+    { icon: "📍", title: "Our Address", detail: footerAddress },
+    { icon: "📞", title: "Phone", detail: footerPhone },
+    { icon: "✉️", title: "Email", detail: footerEmail },
+    { icon: "🕒", title: "Working Hours", detail: "Mon - Sat: 9:00 AM - 8:00 PM" },
+  ];
   return (
     <div>
       <section className="bg-red-600 text-white py-12 mb-10">

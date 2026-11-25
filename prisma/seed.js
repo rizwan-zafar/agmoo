@@ -2,6 +2,14 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { categories as catalogCategories, products as catalogProducts } from "./catalog.js";
 
+const DEFAULT_SITE_SETTINGS = {
+  footerTagline:
+    "Mobile accessories engineered for everyday speed — cables, chargers, earbuds and adapters that just work.",
+  footerAddress: "Lahore, Pakistan",
+  footerPhone: "+92 300 1234567",
+  footerEmail: "support@agmoo.com",
+};
+
 const prisma = new PrismaClient();
 
 function slugify(text) {
@@ -107,6 +115,13 @@ async function main() {
     });
   }
   console.log(`Seeded ${blogsData.length} blog posts.`);
+
+  await prisma.siteSettings.upsert({
+    where: { id: 1 },
+    create: { id: 1, ...DEFAULT_SITE_SETTINGS },
+    update: {},
+  });
+  console.log("Site settings ready.");
 }
 
 main()

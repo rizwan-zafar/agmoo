@@ -2679,6 +2679,63 @@ body:has(.admin-studio) {
   }
 }
 
+.admin-form-section {
+  margin: 0;
+  padding: 0 0 24px;
+  border: 0;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.admin-form-section:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.admin-form-section-title {
+  display: block;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 0;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0b1220;
+}
+
+.admin-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-form input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]),
+.admin-form textarea,
+.admin-form select {
+  border: 1px solid #d6dee8;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #0b1220;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.admin-form input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  outline: none;
+  border-color: #fca5a5;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.18);
+}
+
+.admin-form label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #64748b;
+}
+
 .admin-variant {
   padding: 14px;
   border-radius: 16px;

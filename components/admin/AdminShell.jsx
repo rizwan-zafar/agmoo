@@ -13,6 +13,7 @@ const TITLES = [
   { match: "/admin/orders", title: "Orders", note: "Cash on delivery" },
   ...(BLOGS_ENABLED ? [{ match: "/admin/blogs", title: "Guides", note: "Field notes" }] : []),
   { match: "/admin/messages", title: "Messages", note: "Inbox from the site" },
+  { match: "/admin/settings", title: "Footer", note: "Storefront contact copy" },
   { match: "/admin", title: "Dashboard", note: "Live store pulse" },
 ];
 
