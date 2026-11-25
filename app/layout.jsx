@@ -16,6 +16,8 @@ const body = Inter({
   subsets: ["latin"],
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Agmoo | Mobile Accessories for Everyday Speed",
   description:

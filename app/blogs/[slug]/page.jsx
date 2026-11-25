@@ -3,6 +3,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { toPlain, formatDate } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 async function getBlog(slug) {
   const blog = await prisma.blog.findUnique({ where: { slug } });
   if (!blog || blog.status !== "PUBLISHED") return null;

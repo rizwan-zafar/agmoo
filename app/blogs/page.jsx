@@ -10,6 +10,8 @@ export const metadata = {
   description: "Charging tips, cable guides, and accessory advice from Agmoo.",
 };
 
+export const dynamic = "force-dynamic";
+
 const PAGE_SIZE = 9;
 
 export default async function BlogsPage({ searchParams }) {
