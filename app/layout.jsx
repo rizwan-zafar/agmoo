@@ -1,20 +1,16 @@
-import { Outfit, Inter } from "next/font/google";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/800.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
 import "./globals.css";
 import SiteChrome from "@/components/common/SiteChrome";
 import { CartProvider } from "@/components/cart/CartContext";
 import { ToastProvider } from "@/components/common/ToastContext";
 import { getSiteSettings, pickFooterFields } from "@/lib/siteSettings";
-
-const heading = Outfit({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const body = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +28,7 @@ export default async function RootLayout({ children }) {
   const footer = pickFooterFields(await getSiteSettings());
 
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+    <html lang="en">
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <ToastProvider>
           <CartProvider>

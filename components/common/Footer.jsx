@@ -1,6 +1,11 @@
 import Link from "next/link";
 import BrandMark from "./BrandMark";
 
+const footerLink =
+  "text-white rounded-sm transition-colors hover:text-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+
+const footerHeading = "text-sm font-bold text-white uppercase tracking-wide mb-3";
+
 export default function Footer({
   footerTagline,
   footerAddress,
@@ -8,47 +13,76 @@ export default function Footer({
   footerEmail,
 }) {
   return (
-    <footer className="mt-20 bg-red-700 text-white">
+    <footer className="mt-20 bg-red-900 text-white border-t border-red-800">
       <div className="container-app py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <div className="mb-4">
-            <BrandMark light />
+          <div className="mb-4 rounded-lg bg-white/95 p-2 inline-block">
+            <BrandMark size="md" />
           </div>
-          <p className="text-sm text-white/80 leading-relaxed">{footerTagline}</p>
+          <p className="text-sm text-red-50 leading-relaxed">{footerTagline}</p>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-white uppercase tracking-wide mb-3">
-            Shop
-          </h4>
-          <ul className="space-y-2 text-sm text-white/80">
-            <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
-            <li><Link href="/categories" className="hover:text-white transition-colors">Categories</Link></li>
-            <li><Link href="/about" className="hover:text-white transition-colors">About Agmoo</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold text-white uppercase tracking-wide mb-3">
-            Customer Care
-          </h4>
-          <ul className="space-y-2 text-sm text-white/80">
-            <li><Link href="/cart" className="hover:text-white transition-colors">My Cart</Link></li>
-            <li><Link href="/checkout" className="hover:text-white transition-colors">Checkout</Link></li>
-            <li><span className="text-white/60">Cash on Delivery only</span></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold text-white uppercase tracking-wide mb-3">
-            Get in Touch
-          </h4>
-          <ul className="space-y-2 text-sm text-white/80">
-            <li>{footerAddress}</li>
-            <li>{footerPhone}</li>
+          <h4 className={footerHeading}>Shop</h4>
+          <ul className="space-y-2.5 text-sm text-white">
             <li>
-              <a href={`mailto:${footerEmail}`} className="hover:text-white transition-colors">
+              <Link href="/products" className={footerLink}>
+                All Products
+              </Link>
+            </li>
+            <li>
+              <Link href="/categories" className={footerLink}>
+                Categories
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className={footerLink}>
+                About Agmoo
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className={footerLink}>
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className={footerHeading}>Customer Care</h4>
+          <ul className="space-y-2.5 text-sm text-white">
+            <li>
+              <Link href="/cart" className={footerLink}>
+                My Cart
+              </Link>
+            </li>
+            <li>
+              <Link href="/checkout" className={footerLink}>
+                Checkout
+              </Link>
+            </li>
+            <li>
+              <Link href="/account" className={footerLink}>
+                Sign in / Sign up
+              </Link>
+            </li>
+            <li>
+              <span className="text-red-100">Cash on Delivery only</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className={footerHeading}>Get in Touch</h4>
+          <ul className="space-y-2.5 text-sm text-white">
+            <li className="text-red-50">{footerAddress}</li>
+            <li>
+              <a href={`tel:${String(footerPhone).replace(/\s/g, "")}`} className={footerLink}>
+                {footerPhone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${footerEmail}`} className={footerLink}>
                 {footerEmail}
               </a>
             </li>
@@ -56,21 +90,23 @@ export default function Footer({
         </div>
       </div>
 
-      <div className="border-t border-white/20 bg-red-800">
-        <div className="container-app py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/70">
-          <p>&copy; {new Date().getFullYear()} Agmoo. All rights reserved.</p>
-          <p>
+      <div className="border-t border-white/25 bg-red-950">
+        <div className="container-app py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-red-100">
+          <p className="text-center sm:text-left">
+            &copy; {new Date().getFullYear()} Agmoo. All rights reserved.
+          </p>
+          <p className="text-center">
             Powered by{" "}
             <a
               href="https://mayonity.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-white hover:opacity-90 transition-opacity underline-offset-2 hover:underline"
+              className={`font-semibold text-white ${footerLink}`}
             >
               Mayonity
             </a>
           </p>
-          <Link href="/admin/login" className="hover:text-white transition-colors">
+          <Link href="/admin/login" className={`text-center ${footerLink}`}>
             Admin Login
           </Link>
         </div>
