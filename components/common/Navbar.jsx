@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useCart } from "@/components/cart/CartContext";
+import { useCustomerSession } from "@/components/account/useCustomerSession";
 import BrandMark from "./BrandMark";
 import { BLOGS_ENABLED } from "@/lib/features";
 
@@ -20,6 +21,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { totalItems, hydrated } = useCart();
+  const { customer, loading: customerLoading, logout } = useCustomerSession();
 
   return (
     <header className="sticky top-0 z-40 border-b border-red-600/15 bg-white shadow-[0_1px_0_rgba(220,38,38,0.08)]">
@@ -50,6 +52,41 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2 mr-1">
+            {!customerLoading && customer ? (
+              <>
+                <Link
+                  href="/account"
+                  className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors max-w-[140px] truncate"
+                  title={customer.name}
+                >
+                  {customer.name}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => logout()}
+                  className="rounded-full px-3 py-2 text-sm font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+                >
+                  Sign out
+                </button>
+              </>
+            ) : !customerLoading ? (
+              <>
+                <Link
+                  href="/account"
+                  className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/account?mode=register"
+                  className="rounded-full px-3 py-2 text-sm font-semibold bg-red-600 text-white hover:bg-red-700 transition-colors"
+                >
+                  Sign up
+                </Link>
+              </>
+            ) : null}
+          </div>
           <Link
             href="/cart"
             className="relative flex h-10 w-10 items-center justify-center rounded-full text-red-600 hover:bg-red-50 transition-colors"
@@ -104,6 +141,46 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            <div className="border-t border-red-100 mt-2 pt-2 flex flex-col gap-1">
+              {customer ? (
+                <>
+                  <Link
+                    href="/account"
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-red-50"
+                  >
+                    Account · {customer.name}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      setOpen(false);
+                    }}
+                    className="rounded-lg px-3 py-3 text-left text-sm font-medium text-slate-500 hover:bg-red-50 hover:text-red-600"
+                  >
+                    Sign out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/account"
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg px-3 py-3 text-sm font-medium text-slate-700 hover:bg-red-50 hover:text-red-600"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    href="/account?mode=register"
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg px-3 py-3 text-sm font-semibold bg-red-600 text-white text-center hover:bg-red-700"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </nav>
       )}

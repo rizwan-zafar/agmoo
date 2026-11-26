@@ -103,21 +103,40 @@ model ProductVariant {
   @@map("product_variants")
 }
 
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  shopName  String
+  address   String   @db.Text
+  phone     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders Order[]
+
+  @@map("customers")
+}
+
 model Order {
   id            Int           @id @default(autoincrement())
   orderNumber   String        @unique
   customerName  String
+  shopName      String        @default("")
   email         String        @default("")
   phone         String
   address       String        @db.Text
   paymentMethod PaymentMethod @default(COD)
   status        OrderStatus   @default(PENDING)
   totalAmount   Decimal       @db.Decimal(10, 2)
+  customerId    Int?
+  customer      Customer?     @relation(fields: [customerId], references: [id], onDelete: SetNull)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 
   items OrderItem[]
 
+  @@index([customerId])
   @@map("orders")
 }
 

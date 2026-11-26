@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { getAdminSessionFromRequest } from "@/lib/auth";
+import { getAdminSessionFromRequest, getCustomerSessionFromRequest } from "@/lib/auth";
 import { generateOrderNumber, toPlain } from "@/lib/utils";
 import { validateCheckout, hasErrors } from "@/lib/validation";
 import { sendOrderEmails } from "@/lib/mail";
@@ -51,6 +51,18 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
+    const customerSession = getCustomerSessionFromRequest(request);
+    if (!customerSession?.customerId) {
+      return NextResponse.json({ error: "Sign in to place an order." }, { status: 401 });
+    }
+
+    const customer = await prisma.customer.findUnique({
+      where: { id: customerSession.customerId },
+    });
+    if (!customer) {
+      return NextResponse.json({ error: "Sign in to place an order." }, { status: 401 });
+    }
+
     const data = await request.json();
     const errors = validateCheckout(data);
     if (hasErrors(errors)) {
@@ -129,9 +141,11 @@ export async function POST(request) {
       return tx.order.create({
         data: {
           orderNumber: generateOrderNumber(),
-          customerName: data.customerName.trim(),
-          email: data.email.trim().toLowerCase(),
-          phone: data.phone.trim(),
+          customerId: customer.id,
+          customerName: customer.name,
+          shopName: customer.shopName,
+          email: data.email?.trim() ? data.email.trim().toLowerCase() : "",
+          phone: customer.phone,
           address: data.address.trim(),
           paymentMethod: "COD",
           status: "PENDING",

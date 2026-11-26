@@ -123,6 +123,12 @@ export default function AdminOrderDetailPage({ params }) {
                 <dt className="admin-attention-label">Name</dt>
                 <dd className="font-semibold text-ink-900">{order.customerName}</dd>
               </div>
+              {order.shopName ? (
+                <div>
+                  <dt className="admin-attention-label">Shop</dt>
+                  <dd className="font-medium text-slate-700">{order.shopName}</dd>
+                </div>
+              ) : null}
               <div>
                 <dt className="admin-attention-label">Email</dt>
                 <dd className="font-medium text-slate-700">{order.email || "—"}</dd>

@@ -6,7 +6,7 @@ Root App Router layout, fonts, global CSS, and storefront chrome.
 
 - `app/layout.jsx` — Outfit + Inter, CartProvider, ToastProvider, SiteChrome.
 - `SiteChrome` hides navbar/footer on `/admin`.
-- Navbar: Home, Shop, Categories, Guides, About, Contact, cart. White bar, red mark and active states.
+- Navbar: Home, Shop, Categories, Guides, About, Contact, Sign in / Sign up (or account name), cart. White bar, red mark and active states.
 - Footer: same links, Agmoo copy. Red field, white type.
 - `app/globals.css` — Tailwind v4, red/white brand tokens, homepage 3D, shop fly, admin layout.
 
