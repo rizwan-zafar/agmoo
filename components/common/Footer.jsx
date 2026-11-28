@@ -45,6 +45,11 @@ export default function Footer({
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/account" className={footerLink}>
+                Distributor Login
+              </Link>
+            </li>
           </ul>
         </div>
 
